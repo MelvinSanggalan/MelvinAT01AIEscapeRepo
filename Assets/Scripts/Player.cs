@@ -33,6 +33,29 @@ public class Player : MonoBehaviour
         if (moving == false)
         {
             //Implement inputs and event-callbacks here
+
+            //test
+            if(Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                MoveToNode(CurrentNode.Parents[0]);
+            }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                MoveToNode(CurrentNode.Children[0]);
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                MoveToNode(CurrentNode.Parents[1]);
+            }
+
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                MoveToNode(CurrentNode.Parents[2]);
+            }
+
+
         }
         else
         {
