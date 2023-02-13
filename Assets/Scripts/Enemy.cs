@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
                     transform.Translate(currentDir * speed * Time.deltaTime);
                 }
                 //Implement path finding here
+                //call dfs algorithm method here
             }
             else
             {
