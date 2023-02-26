@@ -30,8 +30,11 @@ public class DepthFirstSearch : MonoBehaviour
         //detect user input for triggering the pathfinding
     }
 
-    public List<Node> FindPath(Node startNode, Node targtNode)
-    {
+
+
+
+    //public List<Node> FindPath(Node startNode, Node targetNode)
+    //{
         //set currentnode to startNode
 
         //add currentnode to stack
@@ -62,9 +65,9 @@ public class DepthFirstSearch : MonoBehaviour
             //if yes: set parent as currentnode and continue loop
             //otherwise return path value
 
-        return null;
+        //return null;
 
 
-    }
+    //}
 
 }

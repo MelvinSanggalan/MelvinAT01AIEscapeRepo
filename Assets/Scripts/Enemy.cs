@@ -13,6 +13,12 @@ public class Enemy : MonoBehaviour
     public delegate void GameEndDelegate();
     public event GameEndDelegate GameOverEvent = delegate { };
 
+    //my variables
+    //stack
+    //public static List<Node> stack = new List<Node>();
+    //my variables
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +39,7 @@ public class Enemy : MonoBehaviour
                 }
                 //Implement path finding here
                 //call dfs algorithm method here
+                
             }
             else
             {
@@ -68,5 +75,28 @@ public class Enemy : MonoBehaviour
         currentDir = currentDir.normalized;
     }
 
-    //Implement DFS algorithm method here
+    //Implement DFS algorithm method here (mine)
+    /*
+    public List<Node> FindPath(Node startNode, Node targetNode)
+    {
+        startNode = currentNode;
+        stack.Add(currentNode);
+    
+        playerCaught = false;
+
+        while (playerCaught == false)
+        {
+            if(currentNode == targetNode)
+            {
+                playerCaught = true;
+                break;
+            }
+        }
+
+     
+
+        return null;
+    }
+    */
+
 }
