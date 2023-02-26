@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     //my variables
     //stack
     //public static List<Node> stack = new List<Node>();
+
+    //private GameObject thePlayer;
     //my variables
 
 
@@ -23,6 +25,20 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         InitializeAgent();
+
+        //my dfs stuff (test)
+        /*
+        thePlayer = GameObject.FindGameObjectWithTag("Player");
+        foreach (Node node in GameManager.Instance.Nodes)
+        {
+            if (node.Parents.Length > 2 && node.Children.Length == 0)
+            {
+                currentNode = node;
+                break;
+            }
+        }
+        */
+
     }
 
     // Update is called once per frame
@@ -39,6 +55,7 @@ public class Enemy : MonoBehaviour
                 }
                 //Implement path finding here
                 //call dfs algorithm method here
+                //DFSSearch(thePlayer.GetComponent<Player>().CurrentNode);
                 
             }
             else
@@ -75,6 +92,7 @@ public class Enemy : MonoBehaviour
         currentDir = currentDir.normalized;
     }
 
+
     //Implement DFS algorithm method here (mine)
     /*
     public List<Node> FindPath(Node startNode, Node targetNode)
@@ -96,6 +114,20 @@ public class Enemy : MonoBehaviour
      
 
         return null;
+    }
+    */
+
+    //my DFS algorithm method 2
+    /*
+    public void DFSSearch(Node node)
+    {
+        if(currentNode != null)
+        {
+            currentNode = thePlayer.GetComponent<Player>().CurrentNode;
+            currentDir = node.transform.position = transform.position;
+            currentDir = currentDir.normalized;
+            //currentNode = node;
+        }
     }
     */
 
