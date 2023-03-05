@@ -13,31 +13,21 @@ public class Enemy : MonoBehaviour
     public delegate void GameEndDelegate();
     public event GameEndDelegate GameOverEvent = delegate { };
 
-    //my variables
-    //stack
-    //public static List<Node> stack = new List<Node>();
 
-    //private GameObject thePlayer;
-    //my variables
-
+    //my stuff
+    private GameObject thePlayer;
+    //my stuff
 
     // Start is called before the first frame update
     void Start()
     {
         InitializeAgent();
 
-        //my dfs stuff (test)
-        /*
+        //my stuff
+
         thePlayer = GameObject.FindGameObjectWithTag("Player");
-        foreach (Node node in GameManager.Instance.Nodes)
-        {
-            if (node.Parents.Length > 2 && node.Children.Length == 0)
-            {
-                currentNode = node;
-                break;
-            }
-        }
-        */
+        Debug.Log(thePlayer.name);
+        //my stuff
 
     }
 
@@ -55,8 +45,10 @@ public class Enemy : MonoBehaviour
                 }
                 //Implement path finding here
                 //call dfs algorithm method here
-                //DFSSearch(thePlayer.GetComponent<Player>().CurrentNode);
-                
+
+                //my stuff
+                ChaseThePlayer(thePlayer.GetComponent<Player>().CurrentNode);
+                //my stuff
             }
             else
             {
@@ -65,6 +57,12 @@ public class Enemy : MonoBehaviour
 
             Debug.DrawRay(transform.position, currentDir, Color.cyan);
         }
+
+
+        //my stuff
+        //Debug.Log(thePlayer.GetComponent<Player>().CurrentNode);
+        //my stuff
+
     }
 
     //Called when a collider enters this object's trigger collider.
@@ -94,41 +92,16 @@ public class Enemy : MonoBehaviour
 
 
     //Implement DFS algorithm method here (mine)
-    /*
-    public List<Node> FindPath(Node startNode, Node targetNode)
-    {
-        startNode = currentNode;
-        stack.Add(currentNode);
-    
-        playerCaught = false;
-
-        while (playerCaught == false)
-        {
-            if(currentNode == targetNode)
-            {
-                playerCaught = true;
-                break;
-            }
-        }
-
-     
-
-        return null;
-    }
-    */
-
-    //my DFS algorithm method 2
-    /*
-    public void DFSSearch(Node node)
+    //my stuff
+    public void ChaseThePlayer(Node node)
     {
         if(currentNode != null)
         {
-            currentNode = thePlayer.GetComponent<Player>().CurrentNode;
-            currentDir = node.transform.position = transform.position;
+            node = thePlayer.GetComponent<Player>().CurrentNode;
+            currentDir = thePlayer.GetComponent<Player>().CurrentNode.transform.position - transform.position;
             currentDir = currentDir.normalized;
-            //currentNode = node;
         }
     }
-    */
+    //my stuff
 
 }
