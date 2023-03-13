@@ -47,8 +47,6 @@ public class Enemy : MonoBehaviour
                 //Implement path finding here
                 //call dfs algorithm method here
 
-                DFSSearch();
-
                 //my stuff
                 //ChaseThePlayer(thePlayer.GetComponent<Player>().CurrentNode);
                 //my stuff
