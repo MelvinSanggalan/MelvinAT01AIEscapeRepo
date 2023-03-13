@@ -73,6 +73,8 @@ public class Player : MonoBehaviour
 
     //Implement mouse interaction method here
 
+
+
     /// <summary>
     /// Sets the players target node and current directon to the specified node.
     /// </summary>
