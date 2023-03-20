@@ -46,7 +46,10 @@ public class Enemy : MonoBehaviour
                 }
                 //Implement path finding here
                 //call dfs algorithm method here
-                DFSSearch();
+                else
+                {
+                    DFSSearch();
+                }
 
                 //my stuff
                 //ChaseThePlayer(thePlayer.GetComponent<Player>().CurrentNode);
@@ -174,26 +177,26 @@ public class Enemy : MonoBehaviour
                 if(nodebeingSearched == GameManager.Instance.Player.CurrentNode)
                 {
                     currentNode = nodebeingSearched;
+                    currentDir = currentNode.transform.position - transform.position;
+                    currentDir = currentDir.normalized;
+                    Debug.Log("Found it " + currentNode);
                     break;
+                }
+                else
+                {
+                foreach (Node nodeChildren in nodebeingSearched.Children)
+                    {
+                        unsearchedNodes.Add(nodeChildren);
+                    }
                 }
                 //else
                 //{
                 //    continue;
                 //}
 
-            }
+            }            
 
-            foreach (Node nodeChildren in nodebeingSearched.Children)
-            {
-                unsearchedNodes.Add(nodeChildren);
-
-            }
-
-            unsearchedNodes.Remove(nodebeingSearched);
-            return;
-
-
-
+            unsearchedNodes.Remove(nodebeingSearched);      
         }
 
 
