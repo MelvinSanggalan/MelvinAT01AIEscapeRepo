@@ -174,7 +174,6 @@ public class Enemy : MonoBehaviour
                 if(nodebeingSearched == GameManager.Instance.Player.CurrentNode)
                 {
                     currentNode = nodebeingSearched;
-                    Debug.Log(currentNode); //test
                     break;
                 }
                 //else
