@@ -28,6 +28,10 @@ public class Player : MonoBehaviour
                 break;
             }
         }
+
+        //mine
+        NavButton.navButtonClickEvent += MouseMove;
+        //mine
     }
 
     // Update is called once per frame
@@ -76,6 +80,27 @@ public class Player : MonoBehaviour
 
     //Implement mouse interaction method here
 
+    //mine
+    public void MouseMove(float _nodeDir)
+    {
+        //test
+        Debug.Log(_nodeDir);
+
+        CurrentNode = GameManager.Instance.Player.CurrentNode;   
+ 
+                if (_nodeDir == 1)
+                {
+                    Debug.Log(CurrentNode.Parents[0] + "Hi");
+                    MoveToNode(CurrentNode.Parents[0]);
+                }
+                else
+                {
+                    CurrentNode = TargetNode;
+                }
+      
+
+    }
+    //mine
 
 
     /// <summary>
@@ -84,7 +109,7 @@ public class Player : MonoBehaviour
     /// <param name="node"></param>
     public void MoveToNode(Node node)
     {
-        if (moving == false)
+        if (moving == false && node.gameObject != null)
         {
             TargetNode = node;
             currentDir = TargetNode.transform.position - transform.position;

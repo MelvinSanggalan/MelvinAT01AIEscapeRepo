@@ -14,21 +14,10 @@ public class Enemy : MonoBehaviour
     public event GameEndDelegate GameOverEvent = delegate { };
 
 
-    //my stuff
-    //private GameObject thePlayer;
-
-    //my stuff
-
     // Start is called before the first frame update
     void Start()
     {
         InitializeAgent();
-
-        //my stuff
-        //thePlayer = GameObject.FindGameObjectWithTag("Player");
-        //Debug.Log(thePlayer.name);
-
-        //my stuff
 
     }
 
@@ -51,9 +40,6 @@ public class Enemy : MonoBehaviour
                     DFSSearch();
                 }
 
-                //my stuff
-                //ChaseThePlayer(thePlayer.GetComponent<Player>().CurrentNode);
-                //my stuff
             }
             else
             {
@@ -63,10 +49,6 @@ public class Enemy : MonoBehaviour
             Debug.DrawRay(transform.position, currentDir, Color.cyan);
         }
 
-
-        //my stuff
-        //Debug.Log(thePlayer.GetComponent<Player>().CurrentNode);
-        //my stuff
 
     }
 
@@ -96,25 +78,7 @@ public class Enemy : MonoBehaviour
     }
 
 
-    //Implement DFS algorithm method here (mine)
-    //my stuff
-    //public void ChaseThePlayer(Node node)
-    //{
-    //    if(currentNode != null)
-    //    {
-    //        node = thePlayer.GetComponent<Player>().CurrentNode;
-    //        currentDir = thePlayer.GetComponent<Player>().CurrentNode.transform.position - transform.position;
-    //        currentDir = currentDir.normalized;
-    //    }
-    // }
-    //my stuff
-
-
-
-
-
-
-
+ 
 
 
     //access the nodes on gamemanager
@@ -201,32 +165,6 @@ public class Enemy : MonoBehaviour
 
 
     }
-
-
-
-
-
-
-
-    /*
-    void Search()
-    {
-
-
-        foreach(Node node in GameManager.Instance.Nodes)
-        {
-            unsearchedNodes.Add(GameManager.Instance.Nodes[0]);
-
-            if(GameManager.Instance.Nodes[0] == GameManager.Instance.Player.CurrentNode)
-            {
-
-            }
-        }
-
-
-        
-    }
-    */
 
 
 
