@@ -90,13 +90,18 @@ public class Player : MonoBehaviour
  
                 if (_nodeDir == 1)
                 {
-                    Debug.Log(CurrentNode.Parents[0] + "Hi");
+                    Debug.Log(CurrentNode.Parents[0] + "Up");
                     MoveToNode(CurrentNode.Parents[0]);
                 }
-                else
+                if (_nodeDir == 2)
                 {
-                    CurrentNode = TargetNode;
+                    Debug.Log(CurrentNode.Children[0] + "Down");
+                    MoveToNode(CurrentNode.Children[0]);
                 }
+                //else
+                //{
+                //    CurrentNode = TargetNode;
+                //}
       
 
     }
@@ -112,7 +117,7 @@ public class Player : MonoBehaviour
         if (moving == false && node.gameObject != null)
         {
             TargetNode = node;
-            currentDir = TargetNode.transform.position - transform.position;
+            currentDir = TargetNode.transform.position - GameManager.Instance.Player.transform.position;
             currentDir = currentDir.normalized;
             moving = true;
         }

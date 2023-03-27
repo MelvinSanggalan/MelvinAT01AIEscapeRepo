@@ -69,6 +69,13 @@ public class NavButton : MonoBehaviour
                 //event call with player's node direction
                 navButtonClickEvent(1);
             }
+
+
+            //test
+            if(result.gameObject.tag == "DownButton")
+            {
+                navButtonClickEvent(2);
+            }
         }
 
     }

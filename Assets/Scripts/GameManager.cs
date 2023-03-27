@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class GameManager : MonoBehaviour
     public Player Player { get { return player; } }
 
     public static GameManager Instance { get; private set; }
+
+
+    //mine (reference to game over screen)
+    public GameObject gameOverScreen;
 
     /// <summary>
     /// Awake is called before Start is executed for the first time.
@@ -42,6 +47,7 @@ public class GameManager : MonoBehaviour
     IEnumerator RestartGame()
     {
         player.enabled = false;
+        gameOverScreen.SetActive(true);
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
