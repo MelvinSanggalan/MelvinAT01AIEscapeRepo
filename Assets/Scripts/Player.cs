@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private bool moving = false;
     private Vector3 currentDir;
 
+
     //[SerializeField]EventSystem
 
     // Start is called before the first frame update
