@@ -89,14 +89,14 @@ public class Player : MonoBehaviour
     public void MouseMove(GameObject imageButton)
     {
         //test
-        Debug.Log(imageButton);
+        //Debug.Log(imageButton);
 
         CurrentNode = GameManager.Instance.Player.CurrentNode;   
  
                 if (imageButton.tag == "UpButton")
                 {
                     Debug.Log(CurrentNode.Parents[0] + "Up");
-                    MoveToNode(CurrentNode.Parents[0]);            
+                    MoveToNode(CurrentNode.Parents[0]);  
                 }
                 if (imageButton.tag == "DownButton")
                 {

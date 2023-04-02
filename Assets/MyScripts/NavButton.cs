@@ -64,10 +64,10 @@ public class NavButton : MonoBehaviour
         foreach(RaycastResult result in results)
         {
             //if button is detected, check if its the up button
-            if (result.gameObject.tag == "UpButton")
+            if(result.gameObject.tag == "UpButton")
             {
-                //event call with player's node direction
-                navButtonClickEvent(result.gameObject);
+                    //event call with player's node direction
+                    navButtonClickEvent(result.gameObject);
             }
 
 
