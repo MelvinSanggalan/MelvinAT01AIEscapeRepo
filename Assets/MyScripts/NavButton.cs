@@ -25,7 +25,7 @@ public class NavButton : MonoBehaviour
     private PointerEventData pData;
 
     //event for nav button click
-    public delegate void NavButtonClick(float nodeDir);
+    public delegate void NavButtonClick(GameObject imageButton);
     public static NavButtonClick navButtonClickEvent;
 
 
@@ -67,14 +67,14 @@ public class NavButton : MonoBehaviour
             if (result.gameObject.tag == "UpButton")
             {
                 //event call with player's node direction
-                navButtonClickEvent(1);
+                navButtonClickEvent(result.gameObject);
             }
 
 
             //test
             if(result.gameObject.tag == "DownButton")
             {
-                navButtonClickEvent(2);
+                navButtonClickEvent(result.gameObject);
             }
         }
 

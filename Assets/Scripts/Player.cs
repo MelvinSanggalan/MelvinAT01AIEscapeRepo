@@ -16,6 +16,10 @@ public class Player : MonoBehaviour
     private Vector3 currentDir;
 
 
+    //mine
+    //public Image upButtonImage;
+
+
     //[SerializeField]EventSystem
 
     // Start is called before the first frame update
@@ -82,28 +86,27 @@ public class Player : MonoBehaviour
     //Implement mouse interaction method here
 
     //mine
-    public void MouseMove(float _nodeDir)
+    public void MouseMove(GameObject imageButton)
     {
         //test
-        Debug.Log(_nodeDir);
+        Debug.Log(imageButton);
 
         CurrentNode = GameManager.Instance.Player.CurrentNode;   
  
-                if (_nodeDir == 1)
+                if (imageButton.tag == "UpButton")
                 {
                     Debug.Log(CurrentNode.Parents[0] + "Up");
-                    MoveToNode(CurrentNode.Parents[0]);
+                    MoveToNode(CurrentNode.Parents[0]);            
                 }
-                if (_nodeDir == 2)
+                if (imageButton.tag == "DownButton")
                 {
                     Debug.Log(CurrentNode.Children[0] + "Down");
                     MoveToNode(CurrentNode.Children[0]);
                 }
-                //else
-                //{
-                //    CurrentNode = TargetNode;
-                //}
-      
+        //else
+        //{
+        //    CurrentNode = TargetNode;
+        //}
 
     }
     //mine
