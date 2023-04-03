@@ -438,7 +438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &569568768
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2072,7 +2072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1600912339
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2247,6 +2247,7 @@ MonoBehaviour:
   parents:
   - {fileID: 355137587}
   - {fileID: 268955034}
+  - {fileID: 268955034}
   children:
   - {fileID: 836551682}
   - {fileID: 1504686828}
@@ -2268,7 +2269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1731596055
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2566,7 +2567,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &2022201151
 BoxCollider:
   m_ObjectHideFlags: 0

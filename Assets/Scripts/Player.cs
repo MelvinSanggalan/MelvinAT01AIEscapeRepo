@@ -112,6 +112,13 @@ public class Player : MonoBehaviour
     //mine
 
 
+    //mine
+
+    //implement raycast method here
+
+    //mine
+
+
     /// <summary>
     /// Sets the players target node and current directon to the specified node.
     /// </summary>
