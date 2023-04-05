@@ -47,25 +47,7 @@ public class Player : MonoBehaviour
             //Implement inputs and event-callbacks here
 
             //test (20/03/2023, use input manager)
-            if(Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                MoveToNode(CurrentNode.Parents[0]);
-            }
-
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                MoveToNode(CurrentNode.Children[0]);
-            }
-
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                MoveToNode(CurrentNode.Parents[1]);
-            }
-
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                MoveToNode(CurrentNode.Parents[2]);
-            }
+            InputRaycast();
 
 
         }
@@ -115,6 +97,59 @@ public class Player : MonoBehaviour
     //mine
 
     //implement raycast method here
+
+    private Node playerNextNode;
+
+    public void InputRaycast()
+    {
+        RaycastHit raycastHitResults;
+
+        if(Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (Physics.Raycast(transform.position, transform.forward, out raycastHitResults, 10))
+            {
+                RaycastMove(raycastHitResults.collider.gameObject);
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if (Physics.Raycast(transform.position, -transform.forward, out raycastHitResults, 10))
+            {
+                RaycastMove(raycastHitResults.collider.gameObject);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (Physics.Raycast(transform.position, -transform.right, out raycastHitResults, 10))
+            {
+                RaycastMove(raycastHitResults.collider.gameObject);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            if (Physics.Raycast(transform.position, transform.right, out raycastHitResults, 10))
+            {
+                RaycastMove(raycastHitResults.collider.gameObject);
+            }
+        }
+
+    }
+
+
+    public void RaycastMove(GameObject raycastHitResults)
+    {
+        Debug.Log(raycastHitResults.name + " was hit.");
+
+        if (raycastHitResults.GetComponent<Node>())
+        {
+            playerNextNode = raycastHitResults.GetComponent<Node>();
+            MoveToNode(playerNextNode);
+        }
+
+    }
 
     //mine
 
