@@ -16,12 +16,6 @@ public class Player : MonoBehaviour
     private Vector3 currentDir;
 
 
-    //mine
-    //public Image upButtonImage;
-
-
-    //[SerializeField]EventSystem
-
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +40,6 @@ public class Player : MonoBehaviour
         {
             //Implement inputs and event-callbacks here
 
-            //test (20/03/2023, use input manager)
             InputRaycast();
 
 
@@ -68,27 +61,20 @@ public class Player : MonoBehaviour
     //Implement mouse interaction method here
 
     //mine
-    public void MouseMove(GameObject imageButton)
-    {
-        //test
-        //Debug.Log(imageButton);
+    private Node playerMouseNextNode;
 
-        CurrentNode = GameManager.Instance.Player.CurrentNode;   
- 
-                if (imageButton.tag == "UpButton")
-                {
-                    Debug.Log(CurrentNode.Parents[0] + "Up");
-                    MoveToNode(CurrentNode.Parents[0]);  
-                }
-                if (imageButton.tag == "DownButton")
-                {
-                    Debug.Log(CurrentNode.Children[0] + "Down");
-                    MoveToNode(CurrentNode.Children[0]);
-                }
-        //else
-        //{
-        //    CurrentNode = TargetNode;
-        //}
+    public void MouseMove(GameObject newMouseNode)
+    {
+        //Debug.Log(newMouseNode.name + "was hit.");
+
+        //check if newmousenode has node component
+        if (newMouseNode.GetComponent<Node>())
+        {
+            //set newmousenode's node as playermousenextnode and move to it
+            playerMouseNextNode = newMouseNode.GetComponent<Node>();
+            MoveToNode(playerMouseNextNode);
+        }
+
 
     }
     //mine
@@ -106,14 +92,17 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
+            //use raycast to see if there is a node in front of the player
             if (Physics.Raycast(transform.position, transform.forward, out raycastHitResults, 10))
             {
+                //give raycastmove the node that was found
                 RaycastMove(raycastHitResults.collider.gameObject);
             }
         }
 
         if(Input.GetKeyDown(KeyCode.DownArrow))
         {
+            //use raycast to see if there is a node behind the player
             if (Physics.Raycast(transform.position, -transform.forward, out raycastHitResults, 10))
             {
                 RaycastMove(raycastHitResults.collider.gameObject);
@@ -122,6 +111,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            //use raycast to see if there is a node to the left of the player
             if (Physics.Raycast(transform.position, -transform.right, out raycastHitResults, 10))
             {
                 RaycastMove(raycastHitResults.collider.gameObject);
@@ -130,6 +120,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            //use raycast to see if there is a node to the right of the player
             if (Physics.Raycast(transform.position, transform.right, out raycastHitResults, 10))
             {
                 RaycastMove(raycastHitResults.collider.gameObject);
@@ -139,6 +130,7 @@ public class Player : MonoBehaviour
     }
 
 
+    //method to move the player to the node
     public void RaycastMove(GameObject raycastHitResults)
     {
         Debug.Log(raycastHitResults.name + " was hit.");
