@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
     {
         RaycastHit raycastHitResults;
 
-        if(Input.GetKeyDown(KeyCode.UpArrow))
+        if(Input.GetButton("Vertical") && Input.GetAxisRaw("Vertical") > 0)
         {
             //use raycast to see if there is a node in front of the player
             if (Physics.Raycast(transform.position, transform.forward, out raycastHitResults, 10))
@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.DownArrow))
+        if(Input.GetButton("Vertical") && Input.GetAxisRaw("Vertical") < 0)
         {
             //use raycast to see if there is a node behind the player
             if (Physics.Raycast(transform.position, -transform.forward, out raycastHitResults, 10))
@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetButton("Horizontal") && Input.GetAxisRaw("Horizontal") < 0)
         {
             //use raycast to see if there is a node to the left of the player
             if (Physics.Raycast(transform.position, -transform.right, out raycastHitResults, 10))
@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetButton("Horizontal") && Input.GetAxisRaw("Horizontal") > 0)
         {
             //use raycast to see if there is a node to the right of the player
             if (Physics.Raycast(transform.position, transform.right, out raycastHitResults, 10))
