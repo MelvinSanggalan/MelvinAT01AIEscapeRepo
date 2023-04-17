@@ -15,6 +15,11 @@ public class Player : MonoBehaviour
     private bool moving = false;
     private Vector3 currentDir;
 
+    //ui nav buttons
+    private GameObject northButton;
+    private GameObject southButton;
+    private GameObject leftButton;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,9 +33,12 @@ public class Player : MonoBehaviour
             }
         }
 
-        //mine
+        //subscribe to navButtonClickEvent
         NavButton.navButtonClickEvent += MouseMove;
-        //mine
+
+        northButton = GameObject.FindGameObjectWithTag("UpButton");
+        southButton = GameObject.FindGameObjectWithTag("DownButton");
+
     }
 
     // Update is called once per frame
@@ -90,6 +98,7 @@ public class Player : MonoBehaviour
     {
         RaycastHit raycastHitResults;
 
+        //forwards
         if(Input.GetButton("Vertical") && Input.GetAxisRaw("Vertical") > 0)
         {
             //use raycast to see if there is a node in front of the player
@@ -97,18 +106,33 @@ public class Player : MonoBehaviour
             {
                 //give raycastmove the node that was found
                 RaycastMove(raycastHitResults.collider.gameObject);
+                //flash green
+                StartCoroutine(uiColorFlashGreen(northButton.gameObject));
+            }
+            else
+            {
+                //flash red
+                StartCoroutine(uiColorFlashRed(northButton.gameObject));
             }
         }
 
+        //backwards
         if(Input.GetButton("Vertical") && Input.GetAxisRaw("Vertical") < 0)
         {
             //use raycast to see if there is a node behind the player
             if (Physics.Raycast(transform.position, -transform.forward, out raycastHitResults, 10))
             {
                 RaycastMove(raycastHitResults.collider.gameObject);
+
+                StartCoroutine(uiColorFlashGreen(southButton.gameObject));
+            }
+            else
+            {
+                StartCoroutine(uiColorFlashRed(southButton.gameObject));
             }
         }
 
+        //left
         if (Input.GetButton("Horizontal") && Input.GetAxisRaw("Horizontal") < 0)
         {
             //use raycast to see if there is a node to the left of the player
@@ -118,6 +142,7 @@ public class Player : MonoBehaviour
             }
         }
 
+        //right
         if (Input.GetButton("Horizontal") && Input.GetAxisRaw("Horizontal") > 0)
         {
             //use raycast to see if there is a node to the right of the player
@@ -160,4 +185,24 @@ public class Player : MonoBehaviour
             moving = true;
         }
     }
+
+
+
+    //coroutines for UI color flash
+    IEnumerator uiColorFlashGreen(GameObject uiGameObject)
+    {
+        uiGameObject.GetComponent<Image>().color = Color.green;
+        yield return new WaitForSeconds(0.5f);
+        uiGameObject.GetComponent<Image>().color = Color.white;
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    IEnumerator uiColorFlashRed(GameObject uiGameObject)
+    {
+        uiGameObject.GetComponent<Image>().color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        uiGameObject.GetComponent<Image>().color = Color.white;
+        yield return new WaitForSeconds(0.5f);
+    }
+
 }
