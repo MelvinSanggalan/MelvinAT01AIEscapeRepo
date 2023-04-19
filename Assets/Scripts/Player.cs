@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private GameObject northButton;
     private GameObject southButton;
     private GameObject leftButton;
+    private GameObject rightButton;
 
 
     // Start is called before the first frame update
@@ -38,6 +39,8 @@ public class Player : MonoBehaviour
 
         northButton = GameObject.FindGameObjectWithTag("UpButton");
         southButton = GameObject.FindGameObjectWithTag("DownButton");
+        leftButton = GameObject.FindGameObjectWithTag("LeftButton");
+        rightButton = GameObject.FindGameObjectWithTag("RightButton");
 
     }
 
@@ -123,7 +126,6 @@ public class Player : MonoBehaviour
             if (Physics.Raycast(transform.position, -transform.forward, out raycastHitResults, 10))
             {
                 RaycastMove(raycastHitResults.collider.gameObject);
-
                 StartCoroutine(uiColorFlashGreen(southButton.gameObject));
             }
             else
@@ -139,6 +141,11 @@ public class Player : MonoBehaviour
             if (Physics.Raycast(transform.position, -transform.right, out raycastHitResults, 10))
             {
                 RaycastMove(raycastHitResults.collider.gameObject);
+                StartCoroutine(uiColorFlashGreen(leftButton.gameObject));
+            }
+            else
+            {
+                StartCoroutine(uiColorFlashRed(leftButton.gameObject));
             }
         }
 
@@ -149,6 +156,11 @@ public class Player : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.right, out raycastHitResults, 10))
             {
                 RaycastMove(raycastHitResults.collider.gameObject);
+                StartCoroutine(uiColorFlashGreen(rightButton.gameObject));
+            }
+            else
+            {
+                StartCoroutine(uiColorFlashRed(rightButton.gameObject));
             }
         }
 
